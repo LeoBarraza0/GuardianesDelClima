@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../img/Home.png");
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+}
+
+.navbar-left .fas {
+    font-size: 24px;
+    color: green;
+}
+
+.navbar-center {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-center a {
+    color: #94bc4f;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar-right .search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 2px solid green; /* Borde del espacio de búsqueda */
+    background-color: transparent; /* Color transparente */
+    padding: 5px;
+    border-radius: 24px;
+}
+
+.navbar-right .search-container .fas {
+    color: white; /* Icono de lupa blanca */
+}
+
+.navbar-right .search-container input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: transparent; /* Color transparente */
+    color: green; /* Color del texto */
+}
+
+.texto-izquierda {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    text-align: left;
+}
+
+.texto-izquierda .editable-text {
+    font-family: 'Noto Serif Display', serif; /* Fuente Noto Serif Display */
+    color: #ffffff;
+    width: 99%; /* Ajusta el ancho del texto */
+    line-height: 1.2; /* Reduce el espacio entre líneas */
+    letter-spacing: -0.5px; /* Reduce el espacio entre letras */
+}
+
+.texto-izquierda h1 {
+    font-size: 60px;
+}
+
+.texto-izquierda h2 {
+    font-size: 24px;
+}
