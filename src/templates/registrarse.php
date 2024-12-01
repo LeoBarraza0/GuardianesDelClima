@@ -1,3 +1,52 @@
+<?php
+session_start();
+include '../../db.php';
+
+// Habilitar la visualización de errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$errorMsg = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombres = trim($_POST['nombres']);
+    $apellidos = trim($_POST['apellidos']);
+    $telefono = trim($_POST['telefono']);
+    $pais = trim($_POST['pais']);
+    $ciudad = trim($_POST['ciudad']);
+    $correo = trim($_POST['correo']);
+    $contrasena = trim($_POST['contrasena']);
+
+    // Validar que los campos no estén vacíos
+    if (empty($nombres) || empty($apellidos) || empty($telefono) || 
+        empty($pais) || empty($ciudad) || empty($correo) || empty($contrasena)) {
+        $errorMsg = "Por favor, complete todos los campos.";
+    } else {
+        // Verificar si el correo ya existe
+        $stmt = $conn->prepare("SELECT IdUsuario FROM usuarios WHERE Correo = ?");
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $errorMsg = "Este correo ya está registrado.";
+        } else {
+            // Insertar nuevo usuario
+            $stmt = $conn->prepare("INSERT INTO usuarios (Nombres, Apellidos, Telefono, Pais, Ciudad, Correo, Contraseña) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssss", $nombres, $apellidos, $telefono, $pais, $ciudad, $correo, $contrasena);
+            
+            if ($stmt->execute()) {
+                header("Location: iniciarSesion.php");
+                exit();
+            } else {
+                $errorMsg = "Error al registrar el usuario: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +59,7 @@
     <div class="container">
         <div class="form-left">
             <h1>Registrarse</h1>
-            <form action="submit_registration.php" method="post">
+            <form action="registrarse.php" method="post">
                 <div class="form-group">
                     <label for="nombres">Nombres</label>
                     <input type="text" id="nombres" name="nombres" required>
@@ -27,10 +76,6 @@
                     <label for="pais">País</label>
                     <input type="text" id="pais" name="pais" required>
                 </div>
-            </form>
-        </div>
-        <div class="form-right">
-            <form action="submit_registration.php" method="post">
                 <div class="form-group">
                     <label for="ciudad">Ciudad</label>
                     <input type="text" id="ciudad" name="ciudad" required>
@@ -48,7 +93,7 @@
                     <label for="recordarme">Recuérdame</label>
                 </div>
                 <div class="form-group">
-                    <p>¿Ya tienes cuenta? <a href="../templates/iniciarSesion.php">Iniciar sesión ahora :)</a></p>
+                    <p>¿Ya tienes cuenta? <a href="../templates/iniciarSesion.php">Iniciar sesión ahora :</a></p>
                 </div>
                 <div class="form-group">
                     <button type="submit">¡Registrarse Ya!</button>

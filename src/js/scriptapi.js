@@ -28,7 +28,6 @@ const descriptionIcon = document.querySelector(".description i");
 
 
 function updateWeatherUI(data) {
-    
     cityElement.textContent = "Weather in "+ data.name;
     temperature.textContent = `${Math.round(data.main.temp)}`+"°C";
     windSpeed.textContent = `${data.wind.speed} km/h`;

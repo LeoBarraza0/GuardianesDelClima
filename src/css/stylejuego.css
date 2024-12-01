@@ -1,107 +1,209 @@
+/* Estilos generales se mantienen igual */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #004D2C;
-    color: #F5EED7;
+  font-family: 'Poppins', sans-serif;
+  background-color: #004D2C;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.game-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    text-align: center;
+.contenedor {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
 }
 
-.hearts-container {
-    margin-bottom: 2rem;
+h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
 }
 
-.hearts-container i {
-    color: #FF0000;
-    font-size: 2rem;
-    margin: 0 0.5rem;
+.ruleta-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 2rem;
 }
 
-.hearts-container i.lost {
-    color: #666;
+.ruleta {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    #e74c3c 0deg 60deg, 
+    #3498db 60deg 120deg, 
+    #2ecc71 120deg 180deg, 
+    #f39c12 180deg 240deg, 
+    #9b59b6 240deg 300deg, 
+    #1abc9c 300deg 360deg
+  );
+  position: relative;
+  transition: transform 3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-#question-container {
-    background-color: #4F9D69;
-    padding: 2rem;
-    border-radius: 1rem;
-    margin-bottom: 2rem;
+/* Ajuste de los sectores y números */
+.sector {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transform-origin: center;
 }
 
-#question-text {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+.sector span {
+  position: absolute;
+  top: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-#options-container {
-    display: grid;
-    gap: 1rem;
+/* Rotación específica para cada sector */
+.sector:nth-child(1) { transform: rotate(30deg); }
+.sector:nth-child(2) { transform: rotate(90deg); }
+.sector:nth-child(3) { transform: rotate(150deg); }
+.sector:nth-child(4) { transform: rotate(210deg); }
+.sector:nth-child(5) { transform: rotate(270deg); }
+.sector:nth-child(6) { transform: rotate(330deg); }
+
+/* Contra-rotación para mantener los números derechos */
+.sector:nth-child(1) span { transform: rotate(-30deg); }
+.sector:nth-child(2) span { transform: rotate(-90deg); }
+.sector:nth-child(3) span { transform: rotate(-150deg); }
+.sector:nth-child(4) span { transform: rotate(-210deg); }
+.sector:nth-child(5) span { transform: rotate(-270deg); }
+.sector:nth-child(6) span { transform: rotate(-330deg); }
+
+.flecha {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 40px solid #2c3e50;
+  z-index: 10;
 }
 
-.option {
-    background-color: #F5EED7;
-    color: #004D2C;
-    border: none;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+.btn-girar {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 2rem;
 }
 
-.option:hover {
-    background-color: #e5ddc7;
+.btn-girar:hover {
+  background-color: #2980b9;
 }
 
-.option.selected {
-    background-color: #4F9D69;
-    color: #F5EED7;
+.pregunta {
+  font-size: 1.2rem;
+  color: #4F9D69;
+  margin-bottom: 1rem;
 }
 
-.message {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-    font-weight: bold;
+.opciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.message.correct {
-    background-color: #4F9D69;
-    color: #F5EED7;
+.opciones button {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 80%;
+  max-width: 300px;
 }
 
-.message.incorrect {
-    background-color: #FF0000;
-    color: #F5EED7;
+.opciones button:hover {
+  background-color: #bdc3c7;
+  transform: scale(1.05);
+}
+
+.resultado {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Estilos existentes se mantienen igual */
+
+.vidas {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+}
+
+.game-over h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.game-over p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 80%;
+}
+
+.btn-reiniciar {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-reiniciar:hover {
+  background-color: #27ae60;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
-#game-over {
-    background-color: #4F9D69;
-    padding: 2rem;
-    border-radius: 1rem;
-}
 
-#game-over button {
-    background-color: #F5EED7;
-    color: #004D2C;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-}
 
-#game-over button:hover {
-    background-color: #e5ddc7;
-}

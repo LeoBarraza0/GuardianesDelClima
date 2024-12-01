@@ -1,3 +1,26 @@
+<?php
+session_start();
+include '../../db.php';
+
+// Supongamos que el ID del usuario está almacenado en la sesión
+if (!isset($_SESSION['IdUsuario'])) {
+    echo "Error: Usuario no ha iniciado sesión.";
+    exit();
+}
+$userId = $_SESSION['IdUsuario'];
+
+// Consulta para obtener la ciudad del usuario
+$sql = "SELECT Ciudad FROM usuarios WHERE idUsuario = $userId";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $ciudadUsuario = $row['Ciudad'];
+} else {
+    echo "No se encontró la ciudad del usuario.";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,32 +31,37 @@
     <title>Clima</title>
 </head>
 <body>
-    <nav class="navbar">
+<nav class="navbar">
         <div class="navbar-left">
-            <a href="#"><i class="material-icons">home</i></a>
+            <a href="#"><i class="fas fa-home"></i></a>
         </div>
         <div class="navbar-center">
-            <a href="#">Tiempo</a>
-            <a href="#">Contáctanos</a>
-            <a href="#">Minijuego</a>
+            <a href="../templates/inicio.php">Inicio</a>
+            <a href="../templates/clima.php">Descubre</a>
+            <a href="#">Sobre nosotros</a>
+            <a href="../templates/juego.php">¡Ponte a prueba!</a>
             <a href="#">Recomendaciones</a>
+            <a href="#">Contactanos</a>
+            <a href="../templates/iniciarSesion.php">Iniciar sesión</a>
         </div>
         <div class="navbar-right">
-            <img src="profile.jpg" alt="Foto de perfil" class="profile-pic">
-            <span class="profile-name">Nombre del Cliente</span>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Búsqueda de ubicación">
+            </div>
         </div>
-    </nav>
+    </nav>  
     <div class="weather-container">
         <div class="weather-app">
-            <form class="search-form" action="">
-                <input class="city-input" type="text" placeholder="Ingrese el nombre de la ciudad">
+            <form class="search-form" method="post" action="">
+                <input class="city-input" type="text" name="city" placeholder="Ingrese el nombre de la ciudad">
                 <button class="search-btn" type="submit">
                     <i class="material-icons">search</i>
                 </button>
             </form>
             <div class="city-date-section">
-                <h2 class="city">Clima en Barranquilla</h2>
-                <p class="date">15 Abr 2024</p>
+                <h2 class="city">Clima en <span id="city-name"><?php echo htmlspecialchars($ciudadUsuario); ?></span></h2>
+                <p class="date"><?php echo date('d M Y'); ?></p>
             </div>
             <div class="temperature-info">
                 <div class="description">
@@ -74,6 +102,21 @@
             </div>
         </div>
     </div>
-    <script src="../js/script.js"></script>
+    <script>
+        // Obtener la ciudad del usuario desde PHP
+        const ciudadUsuario = "<?php echo $ciudadUsuario; ?>";
+
+        // Función para obtener datos del clima
+        async function fetchWeatherData(city) {
+            const apiKey = 'TU_API_KEY';
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+            const data = await response.json();
+            // Actualizar la UI con los datos del clima
+            console.log(data);
+        }
+
+        // Llamar a la función con la ciudad del usuario por defecto
+        fetchWeatherData(ciudadUsuario);
+    </script>
 </body>
 </html>
