@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url('../img/clima.jpg');
+    background-image: url('../images/clima.jpg');
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
     background-repeat: no-repeat;
@@ -82,7 +82,7 @@ body {
 
 .weather-app {
     background-image: url('image.png');
-    background-color: rgb(247, 247, 247);
+    background-color: #66bb6a;
     max-width: 500px; /* Tamaño más pequeño */
     margin: 50px auto;
     padding: 20px; /* Reduce el padding */

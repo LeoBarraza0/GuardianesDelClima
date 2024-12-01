@@ -1,9 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url("../images/Home.png");
-    background-repeat: no-repeat;
-    height: 100vh;
+    background-color: #004d40;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
 
+header {
+    padding: 10px;
 }
 
 .navbar {
@@ -53,26 +57,56 @@ body {
     color: green; /* Color del texto */
 }
 
-.texto-izquierda {
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    text-align: left;
+main {
+    padding: 20px;
 }
 
-.texto-izquierda .editable-text {
-    font-family: 'Noto Serif Display', serif; /* Fuente Noto Serif Display */
-    color: #ffffff;
-    width: 99%; /* Ajusta el ancho del texto */
-    line-height: 1.2; /* Reduce el espacio entre líneas */
-    letter-spacing: -0.5px; /* Reduce el espacio entre letras */
+h1 {
+    text-align: center;
 }
 
-.texto-izquierda h1 {
-    font-size: 60px;
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
-.texto-izquierda h2 {
-    font-size: 24px;
+.section {
+    width: 100%;
+    background-color: #00695c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
+
+.section img {
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.section .text {
+    width: 50%;
+}
+
+.more-content {
+    display: none;
+}
+
+button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
