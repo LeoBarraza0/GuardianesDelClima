@@ -12,14 +12,9 @@ $userId = $_SESSION['IdUsuario'];
 // Consulta para obtener la ciudad del usuario
 $sql = "SELECT Ciudad FROM usuarios WHERE idUsuario = $userId";
 $result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$ciudadUsuario = $row['Ciudad'];
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $ciudadUsuario = $row['Ciudad'];
-} else {
-    echo "No se encontró la ciudad del usuario.";
-    exit();
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,73 +29,6 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <script>
-        // Obtener la ciudad del usuario desde PHP
-
-        const apiKey = '32a8b6a82885431242c1205cb7b288b0'
-async function fetchWeatherData(city) {
-    try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
-        );
-
-        if (!response.ok) {
-            throw new Error("Unable to fetch weather data");
-        }
-        const data = await response.json();
-        console.log(data);
-        updateWeatherUI(data);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-const cityElement = document.querySelector(".city");
-const temperature = document.querySelector(".temp");
-const windSpeed = document.querySelector(".wind-speed");
-const humidity = document.querySelector(".humidity");
-const visibility = document.querySelector(".visibility-distance");
-const pressure = document.querySelector(".pressure");
-const descriptionText = document.querySelector(".description-text");
-const date = document.querySelector(".date");
-const descriptionIcon = document.querySelector(".description i");
-
-
-function updateWeatherUI(data) {
-    cityElement.textContent = "Weather in "+ data.name;
-    temperature.textContent = `${Math.round(data.main.temp)}`+"°C";
-    windSpeed.textContent = `${data.wind.speed} km/h`;
-    humidity.textContent = `${data.main.humidity}%`;
-    visibility.textContent = `${data.visibility / 1000} km`;
-    descriptionText.textContent = data.weather[0].description;
-    pressure.textContent = `${data.main.pressure} mb`;
-    const currentDate = new Date();
-    date.textContent = currentDate.toDateString();
-    const weatherIconName = getWeatherIconName(data.weather[0].main);
-    descriptionIcon.innerHTML = `<i class="material-icons">${weatherIconName}</i>`;
-}
-
-
-const ciudadUsuario = "<?php echo $ciudadUsuario; ?>";
-fetchWeatherData('soledad');
-
-function getWeatherIconName(weatherCondition) {
-    const iconMap = {
-        Clear: "wb_sunny",
-        Clouds: "wb_cloudy",
-        Rain: "umbrella",
-        Thunderstorm: "flash_on",
-        Drizzle: "grain",
-        Snow: "ac_unit",
-        Mist: "cloud",
-        Smoke: "cloud",
-        Haze: "cloud",
-        Fog: "cloud",
-    };
-
-    return iconMap[weatherCondition] || "help";
-}
-    </script>
     <nav class="navbar">
         <div class="navbar-left">
             <a href="#"><i class="fas fa-home"></i></a>
@@ -117,63 +45,123 @@ function getWeatherIconName(weatherCondition) {
             <button type="submit" class="logout-btn">Cerrar Sesión</button>
         </form>
         </div>
-        <div class="navbar-right">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Búsqueda de ubicación">
+    </nav>
+
+    <div class="main-content">
+        <div class="texto-izquierda">
+            <h1 class="editable-text">GUARDIANES DEL CLIMA:</h1>
+            <h2 class="editable-text">La Estrategia para Salvar Nuestro Futuro</h2>
+            
+            <!-- Nueva sección para recomendaciones de IA -->
+            <div class="ai-recommendations-container">
+                <!-- Las recomendaciones de IA se insertarán aquí mediante JavaScript -->
             </div>
         </div>
-    </nav>
-    <div class="texto-izquierda">
-        <h1 class="editable-text">GUARDIANES DEL CLIMA:</h1>
-        <h2 class="editable-text">La Estrategia para Salvar Nuestro Futuro</h2>
-    </div>
-    <div class="weather-container">
-        <div class="weather-app">
-            <div class="city-date-section">
-                <h2 class="city">Clima en <span id="city-name"></span></h2>
-                <p class="date"><?php echo date('d M Y'); ?></p>
-            </div>
-            <div class="temperature-info">
-                <div class="description">
-                    <i class="material-icons">sunny</i>
-                    <span class="description-text">Soleado</span>
+
+        <div class="weather-container">
+            <div class="weather-app">
+                <div class="city-date-section">
+                    <h2 class="city">Clima en <span id="city-name"></span></h2>
+                    <p class="date"><?php echo date('d M Y'); ?></p>
                 </div>
-                <div class="temp">30°C</div>
-            </div>
-            <div class="additional-info">
-                <div class="wind-info">
-                    <i class="material-icons">air</i>
-                    <div>
-                        <h3 class="wind-speed">6 KM/H</h3>
-                        <p class="wind-label">Viento</p>
+                
+                <div class="temperature-info">
+                    <div class="description">
+                        <i class="material-icons">sunny</i>
+                        <span class="description-text">Soleado</span>
                     </div>
+                    <div class="temp">30°C</div>
                 </div>
-                <div class="humidity-info">
-                    <i class="material-icons">water_drop</i>
-                    <div>
-                        <h3 class="humidity">45%</h3>
-                        <p class="humidity-label">Humedad</p>
+
+                <div class="additional-info">
+                    <div class="wind-info">
+                        <i class="material-icons">air</i>
+                        <div>
+                            <h3 class="wind-speed">6 KM/H</h3>
+                            <p class="wind-label">Viento</p>
+                        </div>
                     </div>
-                </div>
-                <div class="visibility-info">
-                    <i class="material-icons">visibility</i>
-                    <div>
-                        <h3 class="visibility-distance">2 KM</h3>
-                        <p class="visibility-label">Visibilidad</p>
+                    <div class="humidity-info">
+                        <i class="material-icons">water_drop</i>
+                        <div>
+                            <h3 class="humidity">45%</h3>
+                            <p class="humidity-label">Humedad</p>
+                        </div>
                     </div>
-                </div>
-                <div class="pressure-info">
-                    <i class="material-icons">compare_arrows</i>
-                    <div>
-                        <h3 class="pressure">500 mb</h3>
-                        <p class="pressure-label">Presión</p>
+                    <div class="visibility-info">
+                        <i class="material-icons">visibility</i>
+                        <div>
+                            <h3 class="visibility-distance">2 KM</h3>
+                            <p class="visibility-label">Visibilidad</p>
+                        </div>
+                    </div>
+                    <div class="pressure-info">
+                        <i class="material-icons">compare_arrows</i>
+                        <div>
+                            <h3 class="pressure">500 mb</h3>
+                            <p class="pressure-label">Presión</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <style>
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .texto-izquierda {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .weather-container {
+            flex: 1;
+        }
+
+        .ai-recommendations-container {
+            margin-top: 30px;
+        }
+
+        .ai-recommendations {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ai-recommendations h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Noto Serif Display', serif;
+            font-size: 1.2em;
+        }
+
+        .ai-recommendations p {
+            line-height: 1.6;
+            color: #444;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .texto-izquierda {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    <script src="../js/scriptlocal.js" data-ciudad="<?php echo $ciudadUsuario; ?>"></script>
 </body>
 </html>
 

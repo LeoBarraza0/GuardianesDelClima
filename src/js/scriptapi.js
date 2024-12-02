@@ -16,6 +16,7 @@ async function fetchWeatherData(city) {
     }
 }
 
+
 const cityElement = document.querySelector(".city");
 const temperature = document.querySelector(".temp");
 const windSpeed = document.querySelector(".wind-speed");
@@ -25,10 +26,12 @@ const pressure = document.querySelector(".pressure");
 const descriptionText = document.querySelector(".description-text");
 const date = document.querySelector(".date");
 const descriptionIcon = document.querySelector(".description i");
+const ciudadUsuario = document.currentScript.getAttribute('data-ciudad');
 
 
 function updateWeatherUI(data) {
-    cityElement.textContent = "Weather in "+ data.name;
+    
+    cityElement.textContent = "Clima en "+ data.name;
     temperature.textContent = `${Math.round(data.main.temp)}`+"°C";
     windSpeed.textContent = `${data.wind.speed} km/h`;
     humidity.textContent = `${data.main.humidity}%`;
@@ -42,8 +45,11 @@ function updateWeatherUI(data) {
     descriptionIcon.innerHTML = `<i class="material-icons">${weatherIconName}</i>`;
 }
 
+
+
 const formElement = document.querySelector(".search-form");
 const inputElement = document.querySelector(".city-input");
+
 
 formElement.addEventListener("submit", function (e) {
     e.preventDefault();

@@ -237,3 +237,48 @@ input[type="text"] {
     }
 }
 
+.climayrec {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Alinea los elementos al inicio */
+    gap: 30px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.weather-app {
+    flex: 1;
+    max-width: 600px;  /* Limita el ancho del panel del clima */
+    background: rgba(87, 177, 91, 0.9);  /* Verde similar al panel del clima */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.recomendaciones-panel {
+    flex: 1;
+    max-width: 600px;  /* Mismo ancho máximo que weather-app */
+    background: rgba(87, 177, 91, 0.7);  /* Verde más claro */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+}
+
+.recomendaciones-panel h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.recomendaciones-panel p {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+

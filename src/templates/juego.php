@@ -1,3 +1,14 @@
+<?php
+session_start();
+include '../../db.php';
+
+// Supongamos que el ID del usuario está almacenado en la sesión
+if (!isset($_SESSION['IdUsuario'])) {
+    echo "Error: Usuario no ha iniciado sesión.";
+    exit();
+}
+$userId = $_SESSION['IdUsuario'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
