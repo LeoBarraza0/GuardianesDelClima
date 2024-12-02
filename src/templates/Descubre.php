@@ -20,8 +20,9 @@ if (isset($_SESSION['IdUsuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Página</title>
-    <link rel="stylesheet" href="../css/styles-clima.css">
-    <link rel="stylesheet" href="../css/styles-inicio.css">
+    <!--<link rel="stylesheet" href="../css/styles-clima.css">-->
+    <!--<link rel="stylesheet" href="../css/styles-inicio.css">-->
+    <link rel="stylesheet" href="../css/descubre.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -44,8 +45,7 @@ if (isset($_SESSION['IdUsuario'])) {
             </form>
         </div>
     </nav>
-    <div style="display: flex; align-items: center; justify-content: center
-    ;" class="weather-app">
+    <div class="weather-app">
         <div>
         <form class="search-form" action="">
             <input class="city-input" type="text" placeholder="Enter City Name" />

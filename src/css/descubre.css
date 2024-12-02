@@ -82,13 +82,20 @@ body {
 }
 
 .weather-app {
+    align-items: center;
+    display: flex;
     background-image: url('image.png');
-    background-color: #66bb6a;
-    max-width: 500px;
-    margin: 0;
+    max-width: 1000px;
+    margin: 5em auto;
     padding: 20px;
     border-radius: 15px;
     border: 2px solid #05b164;
+    flex: 1;
+    max-width: 1000px;
+    background: rgba(87, 177, 91, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .search-form {
@@ -248,17 +255,9 @@ input[type="text"] {
     margin: 0;
 }
 
-.weather-app {
-    flex: 1;
-    max-width: 600px;
-    background: rgba(87, 177, 91, 0.9);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin: 0;
-}
 
 .recomendaciones-panel {
+    margin-left: 3em;
     flex: 1;
     max-width: 600px;  /* Mismo ancho máximo que weather-app */
     background: rgba(87, 177, 91, 0.7);  /* Verde más claro */
