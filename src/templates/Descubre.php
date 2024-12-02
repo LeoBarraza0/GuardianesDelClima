@@ -27,25 +27,26 @@ if (isset($_SESSION['IdUsuario'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
-<nav class="navbar">
-    <div class="navbar-left">
-        <a href="#"><i class="fas fa-home"></i></a>
-    </div>
-    <div class="navbar-center">
-        <a href="../templates/inicio.php">Inicio</a>
-        <a href="../templates/descubre.php">Descubre</a>
-        <a href="#">Sobre nosotros</a>
-        <a href="../templates/juego.php">¡Ponte a prueba!</a>
-        <a href="#">Recomendaciones</a>
-        <a href="#">Contactanos</a>
-        <a href="../templates/iniciarSesion.php">Iniciar sesión</a>
-        <form action="cerrarSesion.php" method="post" style="display:inline;">
-            <button type="submit" class="logout-btn">Cerrar Sesión</button>
-        </form>
-    </div>
-</nav>
-<div class="climayrec">
-    <div class="weather-app">
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="#"><i class="fas fa-home"></i></a>
+        </div>
+        <div class="navbar-center">
+            <a href="../templates/inicio.php">Inicio</a>
+            <a href="../templates/descubre.php">Descubre</a>
+            <a href="#">Sobre nosotros</a>
+            <a href="../templates/juego.php">¡Ponte a prueba!</a>
+            <a href="#">Recomendaciones</a>
+            <a href="#">Contactanos</a>
+            <a href="../templates/iniciarSesion.php">Iniciar sesión</a>
+            <form action="cerrarSesion.php" method="post" style="display:inline;">
+                <button type="submit" class="logout-btn">Cerrar Sesión</button>
+            </form>
+        </div>
+    </nav>
+    <div style="display: flex; align-items: center; justify-content: center
+    ;" class="weather-app">
+        <div>
         <form class="search-form" action="">
             <input class="city-input" type="text" placeholder="Enter City Name" />
             <button class="search-btn" type="submit">
@@ -93,16 +94,17 @@ if (isset($_SESSION['IdUsuario'])) {
                 </div>
             </div>
         </div>
-    </div>
-    <div class="recomendaciones-panel">
+        </div>
+        
+        <div class="recomendaciones-panel">
         <h2>Recomendaciones</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur repellat veniam odit nihil iusto vel
+        <p class="Recomendaciones">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur repellat veniam odit nihil iusto vel
             nesciunt non commodi, recusandae sapiente quibusdam deserunt iure. Laudantium dolorem ducimus aliquam
             asperiores esse fuga. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut necessitatibus hic
             sequi, autem dolore, blanditiis quo nostrum animi numquam velit eligendi quae quibusdam deserunt maxime
             quas, incidunt provident harum voluptatem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita vitae laboriosam qui facere suscipit odit, dolor ex doloribus animi dignissimos. Soluta non molestiae porro quos perspiciatis amet, animi ipsum dolorum!</p>
     </div>
-</div>
+    </div>
 <script src="../js/scriptapi.js" data-ciudad="<?php echo $ciudadUsuario; ?>"></script>
 </body>
 

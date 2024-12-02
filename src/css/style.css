@@ -12,7 +12,7 @@ body {
 .weather-app {
 
     background-color: rgb(247, 247, 247);
-    max-width: 800px;
+    max-width: 1000px;
     margin: 50px auto;
     padding: 30px;
     border-radius: 15px;

@@ -77,17 +77,18 @@ body {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 60px); /* Ajusta la altura restando la altura de la navbar */
-    padding-top: 60px; /* Añade espacio para la navbar */
+    padding-top: 0; /* Eliminado el padding-top */
+    margin: 0; /* Aseguramos que no haya márgenes */
 }
 
 .weather-app {
     background-image: url('image.png');
     background-color: #66bb6a;
-    max-width: 500px; /* Tamaño más pequeño */
-    margin: 50px auto;
-    padding: 20px; /* Reduce el padding */
+    max-width: 500px;
+    margin: 0%;
+    padding: 20px;
     border-radius: 15px;
-    border: 2px solid #05b164; /* Borde del contenedor */
+    border: 2px solid #05b164;
 }
 
 .search-form {
@@ -240,20 +241,21 @@ input[type="text"] {
 .climayrec {
     display: flex;
     justify-content: center;
-    align-items: flex-start;  /* Alinea los elementos al inicio */
+    align-items: flex-start;
     gap: 30px;
     padding: 20px;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .weather-app {
     flex: 1;
-    max-width: 600px;  /* Limita el ancho del panel del clima */
-    background: rgba(87, 177, 91, 0.9);  /* Verde similar al panel del clima */
+    max-width: 600px;
+    background: rgba(87, 177, 91, 0.9);
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 0;
 }
 
 .recomendaciones-panel {
