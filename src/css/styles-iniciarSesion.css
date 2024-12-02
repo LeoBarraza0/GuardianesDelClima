@@ -1,52 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Note+Serif+Display+ExtraCondensed:wght@200&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     background-color: #0b3d2e;
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Cambiar align-items a flex-start para mover el formulario hacia arriba */
     height: 100vh;
     margin: 0;
+    padding-top: 20px; /* Añadir un poco de espacio superior */
 }
 
 .container {
-    background-color: #1a4d3f;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
+    padding: 30px; /* Aumentar padding */
+    width: 500px; /* Aumentar ancho */
+    color: #ffffff; /* Cambiar color del texto */
+    letter-spacing: 2px; /* Espacio entre letras */
+    position: relative; /* Añadir posición relativa para el contenedor */
 }
 
 h1 {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
-}
-
-.form-left, .form-right {
-    width: 50%;
-    padding: 10px;
+    font-family: 'Note Serif Display ExtraCondensed', serif; /* Aplicar la fuente al título */
+    font-weight: 200; /* Asegurarse de que no sea negrita */
+    font-stretch: expanded; /* Hacer que la fuente se vea más alargada */
+    font-size: 3.2em; /* Aumentar tamaño de la fuente */
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Aumentar margen inferior */
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Aumentar margen inferior */
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 15px; /* Aumentar padding */
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-bottom: 15px; /* Aumentar espacio entre inputs */
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 input[type="checkbox"] {
@@ -55,11 +58,13 @@ input[type="checkbox"] {
 
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+    padding: 15px; /* Aumentar padding */
+    background-color: #76b666;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    color: white; /* Cambiar color del texto a blanco */
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 button:hover {
@@ -69,6 +74,7 @@ button:hover {
 a {
     color: #28a745;
     text-decoration: none;
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 a:hover {
@@ -78,4 +84,19 @@ a:hover {
 p {
     text-align: center;
     width: 100%;
+    font-size: 0.9em; /* Aumentar tamaño de la fuente */
+}
+
+.recuerdame {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
+}
+
+.logo {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 50px; /* Ajustar tamaño del logo */
+    height: auto;
 }

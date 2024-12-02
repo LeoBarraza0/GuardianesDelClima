@@ -41,24 +41,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles-iniciarSesion.css">
+    <link rel="icon" href="../images/logoGuardianes.png" type="image/x-icon"> <!-- Añadir favicon -->
     <title>Iniciar Sesión</title>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
         <?php if ($errorMsg): ?>
             <div class="error-message"><?php echo $errorMsg; ?></div>
         <?php endif; ?>
         <form action="iniciarSesion.php" method="post">
-            <label for="correo">Correo</label>
-            <input type="email" id="correo" name="correo" required>
-            
-            <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" name="password" required>
-            
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="password" required>
+            </div>
+            <div class="form-group recuerdame">
+                <input type="checkbox" id="recuerdame" name="recuerdame">
+                <label for="recuerdame">Recuérdame</label>
+            </div>
             <button type="submit">Iniciar Sesión</button>
         </form>
         <p class="registro">¿Aún no tienes cuenta? <a href="registrarse.php">Regístrate aquí :)</a></p>
+        <img src="../images/logoGuardianes.png" alt="Logo" class="logo"> <!-- Añadir el logo aquí -->
     </div>
 </body>
 </html>
+
