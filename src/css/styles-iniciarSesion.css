@@ -24,7 +24,7 @@ h1 {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Note Serif Display ExtraCondensed', serif; /* Aplicar la fuente al título */
+    font-family: 'Noto Serif Display', serif; /* Aplicar la fuente al título */
     font-weight: 200; /* Asegurarse de que no sea negrita */
     font-stretch: expanded; /* Hacer que la fuente se vea más alargada */
     font-size: 3.2em; /* Aumentar tamaño de la fuente */
