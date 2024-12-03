@@ -123,18 +123,18 @@ $ciudadUsuario = $row['Ciudad'];
         <div class="team">
             <h3>Conoce a Nuestro Equipo</h3>
             <div class="team-member">
-                <img src="../images/team-member1.jpg" alt="Miembro del equipo 1">
-                <h4>Juan Pérez</h4>
+                <img src="../images/leo.png" alt="Miembro del equipo 1">
+                <h4>Leonardo Barraza</h4>
                 <p>Director Ejecutivo</p>
             </div>
             <div class="team-member">
-                <img src="../images/team-member2.jpg" alt="Miembro del equipo 2">
-                <h4>María Gómez</h4>
+                <img src="../images/jenn.jpg" alt="Miembro del equipo 2">
+                <h4>Jenifer Lopez</h4>
                 <p>Coordinadora de Proyectos</p>
             </div>
             <div class="team-member">
-                <img src="../images/team-member3.jpg" alt="Miembro del equipo 3">
-                <h4>Carlos López</h4>
+                <img src="../images/emanuel.png" alt="Miembro del equipo 3">
+                <h4>Emanuel Barranco</h4>
                 <p>Especialista en Educación Ambiental</p>
             </div>
         </div>
@@ -163,7 +163,7 @@ $ciudadUsuario = $row['Ciudad'];
         <div class="footer-section">
             <h3>Atención al Cliente</h3>
             <p>Teléfono: 123-456-7890</p>
-            <p>Email: atencion@ejemplo.com</p>
+            <p>Email: atencion@gmail.com</p>
         </div>
         <div class="footer-section">
             <h3>Políticas</h3>
@@ -172,9 +172,9 @@ $ciudadUsuario = $row['Ciudad'];
         </div>
         <div class="footer-section">
             <h3>Nuestras Redes Sociales</h3>
-            <p><a href="#"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://www.facebook.com/jenifer.p.lopez.50"><i class="fab fa-facebook"></i> Facebook</a></p>
             <p><a href="#"><i class="fab fa-twitter"></i> Twitter</a></p>
-            <p><a href="#"><i class="fab fa-instagram"></i> Instagram</a></p>
+            <p><a href="https://www.instagram.com/jenn_lopez0614/"><i class="fab fa-instagram"></i> Instagram</a></p>
         </div>
     </footer>
     <script src="../js/scriptlocal.js" data-ciudad="<?php echo $ciudadUsuario; ?>"></script>
