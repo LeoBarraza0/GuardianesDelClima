@@ -35,10 +35,10 @@ if (isset($_SESSION['IdUsuario'])) {
         <div class="navbar-center">
             <a href="../templates/inicio.php">Inicio</a>
             <a href="../templates/descubre.php">Descubre</a>
-            <a href="#">Sobre nosotros</a>
+            <a href="../templates/inicio.php">Sobre nosotros</a>
             <a href="../templates/juego.php">¡Ponte a prueba!</a>
             <a href="#">Recomendaciones</a>
-            <a href="#">Contactanos</a>
+            <a href="../templates/inicio.php">Contactanos</a>
             <form action="cerrarSesion.php" method="post" style="display:inline;">
                 <button type="submit" class="logout-btn">Cerrar Sesión</button>
             </form>
