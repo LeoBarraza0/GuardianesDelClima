@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container">
+        <h1>Registrarse</h1>
         <div class="form-left">
-            <h1>Registrarse</h1>
             <form action="registrarse.php" method="post">
                 <div class="form-group">
                     <label for="nombres">Nombres</label>
@@ -76,6 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="pais">País</label>
                     <input type="text" id="pais" name="pais" required>
                 </div>
+            </form>
+        </div>
+        <div class="form-right">
+            <form action="registrarse.php" method="post">
                 <div class="form-group">
                     <label for="ciudad">Ciudad</label>
                     <input type="text" id="ciudad" name="ciudad" required>
@@ -93,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="recordarme">Recuérdame</label>
                 </div>
                 <div class="form-group">
-                    <p>¿Ya tienes cuenta? <a href="../templates/iniciarSesion.php">Iniciar sesión ahora :</a></p>
+                    <p>¿Ya tienes cuenta? <a href="../templates/iniciarSesion.php">Iniciar sesión ahora :)</a></p>
                 </div>
                 <div class="form-group">
                     <button type="submit">¡Registrarse Ya!</button>

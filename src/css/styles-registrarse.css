@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;700&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     background-color: #0b3d2e;
@@ -10,56 +12,46 @@ body {
 }
 
 .container {
-    background-color: #3bdf8b1c;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 800px;
+    padding: 30px; /* Aumentar padding */
+    width: 900px; /* Aumentar ancho */
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 h1 {
+    font-family: 'Noto Serif Display', serif;
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
+    font-size: 3em; /* Aumentar tamaño de la fuente */
 }
 
-.form-left {
-    width: 50%;
-    padding: 10px;
-}
-
-.form-right {
-    width: 50%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.form-left, .form-right {
+    width: 45%; /* Ajustar ancho */
+    padding: 20px; /* Aumentar padding */
 }
 
 .form-group {
-    margin-bottom: 15px;
-}
-
-.recuerdame {
-    display: flex;
-    align-items: center;
+    margin-bottom: 20px; /* Aumentar margen inferior */
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Aumentar margen inferior */
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 15px; /* Aumentar padding */
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-bottom: 15px; /* Aumentar espacio entre inputs */
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 input[type="checkbox"] {
@@ -68,12 +60,13 @@ input[type="checkbox"] {
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 15px; /* Aumentar padding */
     background-color: rgb(118, 182, 102);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     color: white;
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 button:hover {
@@ -83,6 +76,7 @@ button:hover {
 a {
     color: #28a745;
     text-decoration: none;
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 a:hover {
@@ -92,4 +86,11 @@ a:hover {
 p {
     text-align: center;
     width: 100%;
+    font-size: -0.8em; /* Aumentar tamaño de la fuente */
+}
+
+.recuerdame {
+    display: flex;
+    align-items: center;
+    font-size: 1em; /* Aumentar tamaño de la fuente */
 }

@@ -17,12 +17,11 @@
         </div>
         <div class="navbar-center">
             <a href="#inicio">Inicio</a>
-            <a href="#descubre">Descubre</a>
+            <a href="../templates/Descubre.php">Descubre</a>
             <a href="#sobre-nosotros">Sobre nosotros</a>
-            <a href="#juego">¡Ponte a prueba!</a>
+            <a href="../templates/juego.php">¡Ponte a prueba!</a>
             <a href="#recomendaciones">Recomendaciones</a>
             <a href="#contacto">Contáctanos</a>
-            <a href="#iniciar-sesion">Iniciar sesión</a>
             <form action="cerrarSesion.php" method="post" style="display:inline;">
                 <button type="submit" class="logout-btn">Cerrar Sesión</button>
             </form>
@@ -37,7 +36,7 @@
         <div class="carousel">
             <!-- Carrusel de imágenes -->
             <div class="carousel-item active">
-                <img src="ruta-de-la-imagen1.jpg" alt="Imagen 1">
+                <img src="../images/clima.jpg" alt="Imagen 1">
             </div>
             <div class="carousel-item">
                 <img src="ruta-de-la-imagen2.jpg" alt="Imagen 2">
@@ -90,5 +89,6 @@
             <p><a href="#"><i class="fab fa-instagram"></i> Instagram</a></p>
         </div>
     </footer>
+    <script src="../js/index.js"></script>
 </body>
 </html>

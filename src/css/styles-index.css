@@ -1,5 +1,5 @@
 body {
-    font-family: 'Noto Serif Display', serif;
+    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     color: #333;
     margin: 0;
@@ -7,7 +7,7 @@ body {
 }
 
 .navbar {
-    background-color: #333;
+    background-color: #013927;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@ body {
 }
 
 .navbar a {
-    color: white;
+    color: #94bc4f;
     text-decoration: none;
     margin: 0 10px;
 }
@@ -35,11 +35,22 @@ body {
     width: 100%;
     height: 300px;
     margin: 20px 0;
+    position: relative;
 }
 
 .carousel-item {
     min-width: 100%;
     transition: transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 0;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 1;
 }
 
 .carousel-item img {
@@ -88,7 +99,7 @@ body {
 }
 
 .footer {
-    background-color: #333;
+    background-color: #013927;
     color: white;
     display: flex;
     justify-content: space-around;
