@@ -39,7 +39,6 @@ if (isset($_SESSION['IdUsuario'])) {
             <a href="../templates/juego.php">¡Ponte a prueba!</a>
             <a href="#">Recomendaciones</a>
             <a href="#">Contactanos</a>
-            <a href="../templates/iniciarSesion.php">Iniciar sesión</a>
             <form action="cerrarSesion.php" method="post" style="display:inline;">
                 <button type="submit" class="logout-btn">Cerrar Sesión</button>
             </form>
