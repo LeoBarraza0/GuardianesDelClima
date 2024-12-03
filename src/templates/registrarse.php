@@ -10,13 +10,14 @@ error_reporting(E_ALL);
 $errorMsg = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombres = trim($_POST['nombres']);
-    $apellidos = trim($_POST['apellidos']);
-    $telefono = trim($_POST['telefono']);
-    $pais = trim($_POST['pais']);
-    $ciudad = trim($_POST['ciudad']);
-    $correo = trim($_POST['correo']);
-    $contrasena = trim($_POST['contrasena']);
+    $nombres = isset($_POST['nombres']) ? trim($_POST['nombres']) : '';
+    $apellidos = isset($_POST['apellidos']) ? trim($_POST['apellidos']) : '';
+    $telefono = isset($_POST['telefono']) ? trim($_POST['telefono']) : '';
+    $pais = isset($_POST['pais']) ? trim($_POST['pais']) : '';
+    $ciudad = isset($_POST['ciudad']) ? trim($_POST['ciudad']) : '';
+    $correo = isset($_POST['correo']) ? trim($_POST['correo']) : '';
+    $contrasena = isset($_POST['contrasena']) ? trim($_POST['contrasena']) : '';
+    $fechaRegistro = date('Y-m-d H:i:s'); // Añadir la fecha de registro
 
     // Validar que los campos no estén vacíos
     if (empty($nombres) || empty($apellidos) || empty($telefono) || 
@@ -33,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errorMsg = "Este correo ya está registrado.";
         } else {
             // Insertar nuevo usuario
-            $stmt = $conn->prepare("INSERT INTO usuarios (Nombres, Apellidos, Telefono, Pais, Ciudad, Correo, Contraseña) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssss", $nombres, $apellidos, $telefono, $pais, $ciudad, $correo, $contrasena);
+            $stmt = $conn->prepare("INSERT INTO usuarios (Nombres, Apellidos, Telefono, Pais, Ciudad, Correo, Contraseña, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssss", $nombres, $apellidos, $telefono, $pais, $ciudad, $correo, $contrasena, $fechaRegistro);
             
             if ($stmt->execute()) {
                 header("Location: iniciarSesion.php");
@@ -46,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
