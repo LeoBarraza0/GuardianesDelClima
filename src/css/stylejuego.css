@@ -10,6 +10,30 @@ body {
   min-height: 100vh;
 }
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+}
+
+.navbar-left .fas {
+    font-size: 24px;
+    color: green;
+}
+
+.navbar-center {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-center a {
+    color: #94bc4f;
+    text-decoration: none;
+    font-size: 18px;
+}
+
 .contenedor {
   background-color: #ffffff;
   border-radius: 20px;
@@ -204,6 +228,3 @@ h1 {
 .hidden {
   display: none;
 }
-
-
-

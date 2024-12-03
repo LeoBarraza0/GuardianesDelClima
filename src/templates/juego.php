@@ -30,13 +30,6 @@ $userId = $_SESSION['IdUsuario'];
             <a href="../templates/juego.php">¡Ponte a prueba!</a>
             <a href="#">Recomendaciones</a>
             <a href="#">Contactanos</a>
-            <a href="../templates/iniciarSesion.php">Iniciar sesión</a>
-        </div>
-        <div class="navbar-right">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Búsqueda de ubicación">
-            </div>
         </div>
     </nav>  
   <div class="contenedor">
@@ -66,4 +59,3 @@ $userId = $_SESSION['IdUsuario'];
   <script src="../js/scriptjuego.js"></script>
 </body>
 </html>
-

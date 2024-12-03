@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Note+Serif+Display+ExtraCondensed:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;700&display=swap');
 
 body {
     font-family: Arial, sans-serif;
@@ -12,26 +12,41 @@ body {
     padding-top: 20px; /* Añadir un poco de espacio superior */
 }
 
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 .container {
     padding: 30px; /* Aumentar padding */
-    width: 500px; /* Aumentar ancho */
-    color: #ffffff; /* Cambiar color del texto */
-    letter-spacing: 2px; /* Espacio entre letras */
-    position: relative; /* Añadir posición relativa para el contenedor */
+    width: 500px; /* Ajustar ancho */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    height: 707px
 }
 
 h1 {
+    font-family: 'Noto Serif Display', serif;
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
-    font-family: 'Noto Serif Display', serif; /* Aplicar la fuente al título */
-    font-weight: 200; /* Asegurarse de que no sea negrita */
-    font-stretch: expanded; /* Hacer que la fuente se vea más alargada */
-    font-size: 3.2em; /* Aumentar tamaño de la fuente */
+    font-size: 3em; /* Aumentar tamaño de la fuente */
+}
+
+.form-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group {
     margin-bottom: 20px; /* Aumentar margen inferior */
+    width: 100%;
 }
 
 label {
@@ -59,11 +74,11 @@ input[type="checkbox"] {
 button {
     width: 100%;
     padding: 15px; /* Aumentar padding */
-    background-color: #76b666;
+    background-color: rgb(118, 182, 102);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: white; /* Cambiar color del texto a blanco */
+    color: white;
     font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
@@ -74,7 +89,7 @@ button:hover {
 a {
     color: #28a745;
     text-decoration: none;
-    font-size: 1.2em; /* Aumentar tamaño de la fuente */
+    font-size: 1em; /* Aumentar tamaño de la fuente */
 }
 
 a:hover {
@@ -84,17 +99,17 @@ a:hover {
 p {
     text-align: center;
     width: 100%;
-    font-size: 0.9em; /* Aumentar tamaño de la fuente */
+    font-size: 1.2em; /* Aumentar tamaño de la fuente */
 }
 
 .recuerdame {
     display: flex;
     align-items: center;
-    font-size: 1.2em; /* Aumentar tamaño de la fuente */
+    font-size: 1em; /* Aumentar tamaño de la fuente */
 }
 
 .logo {
-    position: fixed;
+    position: absolute;
     bottom: 10px;
     left: 10px;
     width: 50px; /* Ajustar tamaño del logo */

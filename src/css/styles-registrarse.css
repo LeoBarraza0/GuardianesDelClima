@@ -94,3 +94,11 @@ p {
     align-items: center;
     font-size: 1em; /* Aumentar tamaño de la fuente */
 }
+
+.logo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 50px; /* Ajustar tamaño del logo */
+    height: auto;
+}
