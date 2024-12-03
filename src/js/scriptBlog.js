@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     readMoreButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const moreContent = this.previousElementSibling;
-            if (moreContent.style.display === 'none' || moreContent.style.display === '') {
-                moreContent.style.display = 'block';
-                this.textContent = 'READ LESS';
+            const content = this.parentElement.querySelector('.more-content');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                this.textContent = 'LEER MENOS';
             } else {
-                moreContent.style.display = 'none';
-                this.textContent = 'READ MORE';
+                content.style.display = 'none';
+                this.textContent = 'LEER MÁS';
             }
         });
     });

@@ -43,6 +43,37 @@ function updateWeatherUI(data) {
     date.textContent = currentDate.toDateString();
     const weatherIconName = getWeatherIconName(data.weather[0].main);
     descriptionIcon.innerHTML = `<i class="material-icons">${weatherIconName}</i>`;
+
+    // Agregar envío de datos al PHP
+    const weatherData = {
+        temperatura: Math.round(data.main.temp),
+        viento: data.wind.speed,
+        humedad: data.main.humidity,
+        visibilidad: data.visibility / 1000,
+        presion: data.main.pressure
+    };
+
+    console.log('Datos del clima enviados al servidor:', weatherData);
+
+    const recomendacionesPanel = document.querySelector('.Recomendaciones');
+    recomendacionesPanel.textContent = 'Generando...';
+
+    fetch('Descubre.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(weatherData)
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Respuesta de Llama3:', data);
+        recomendacionesPanel.textContent = data;
+    })
+    .catch(error => {
+        console.error('Error en la comunicación:', error);
+        recomendacionesPanel.textContent = 'Error al obtener recomendaciones';
+    });
 }
 
 

@@ -30,18 +30,41 @@ $ciudadUsuario = $row['Ciudad'];
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-left">
-            <a href="#"><i class="fas fa-home"></i></a>
+        <div class="navbar-brand">
+            <img src="../images/logoGuardianes.png" alt="Logo" class="nav-logo">
         </div>
         <div class="navbar-center">
-            <a href="../templates/inicio.php">Inicio</a>
-            <a href="../templates/descubre.php">Descubre</a>
-            <a href="#sobre-nosotros">Sobre nosotros</a>
-            <a href="../templates/juego.php">¡Ponte a prueba!</a>
-            <a href="../templates/">Recomendaciones</a>
-            <a href="#contacto">Contáctanos</a>
-            <form action="cerrarSesion.php" method="post" style="display:inline;">
-                <button type="submit" class="logout-btn">Cerrar Sesión</button>
+            <a href="../templates/inicio.php" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="../templates/descubre.php" class="nav-link">
+                <i class="fas fa-compass"></i>
+                <span>Descubre</span>
+            </a>
+            <a href="#sobre-nosotros" class="nav-link">
+                <i class="fas fa-users"></i>
+                <span>Sobre nosotros</span>
+            </a>
+            <a href="../templates/juego.php" class="nav-link">
+                <i class="fas fa-gamepad"></i>
+                <span>¡Ponte a prueba!</span>
+            </a>
+            <a href="../templates/blog.php" class="nav-link">
+                <i class="fas fa-lightbulb"></i>
+                <span>Recomendaciones</span>
+            </a>
+            <a href="#contacto" class="nav-link">
+                <i class="fas fa-envelope"></i>
+                <span>Contáctanos</span>
+            </a>
+        </div>
+        <div class="navbar-right">
+            <form action="cerrarSesion.php" method="post">
+                <button type="submit" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span>
+                </button>
             </form>
         </div>
     </nav>
@@ -102,61 +125,160 @@ $ciudadUsuario = $row['Ciudad'];
 
     <section id="sobre-nosotros" class="about-us">
         <h2>Sobre Nosotros</h2>
-        <p>Somos una organización dedicada a la protección del medio ambiente y la lucha contra el cambio climático. Nuestro objetivo es educar y concienciar a las personas sobre la importancia de cuidar nuestro planeta.</p>
-        <div class="mission">
-            <h3>Nuestra Misión</h3>
-            <p>Promover prácticas sostenibles y responsables que ayuden a mitigar los efectos del cambio climático. Trabajamos con comunidades locales, gobiernos y organizaciones internacionales para implementar proyectos que protejan el medio ambiente.</p>
-        </div>
-        <div class="vision">
-            <h3>Nuestra Visión</h3>
-            <p>Un mundo donde todas las personas vivan en armonía con la naturaleza, disfrutando de un entorno limpio y saludable. Aspiramos a ser líderes en la lucha contra el cambio climático y la protección del medio ambiente.</p>
-        </div>
-        <div class="values">
-            <h3>Nuestros Valores</h3>
-            <ul>
-                <li><strong>Sostenibilidad:</strong> Fomentamos el uso responsable de los recursos naturales.</li>
-                <li><strong>Innovación:</strong> Buscamos soluciones creativas y efectivas para los desafíos ambientales.</li>
-                <li><strong>Colaboración:</strong> Trabajamos en conjunto con diversas entidades para lograr nuestros objetivos.</li>
-                <li><strong>Educación:</strong> Creemos en la importancia de educar a las futuras generaciones sobre la protección del medio ambiente.</li>
-            </ul>
-        </div>
-        <div class="team">
-            <h3>Conoce a Nuestro Equipo</h3>
-            <div class="team-member">
-                <img src="../images/leo.png" alt="Miembro del equipo 1">
-                <h4>Leonardo Barraza</h4>
-                <p>Director Ejecutivo</p>
+        <div class="about-cards">
+            <div class="about-card">
+                <h3>Nuestra Misión</h3>
+                <p>Promover prácticas sostenibles y responsables que ayuden a mitigar los efectos del cambio climático.</p>
             </div>
-            <div class="team-member">
-                <img src="../images/jenn.jpg" alt="Miembro del equipo 2">
-                <h4>Jenifer Lopez</h4>
-                <p>Coordinadora de Proyectos</p>
+            <div class="about-card">
+                <h3>Nuestra Visión</h3>
+                <p>Un mundo donde todas las personas vivan en armonía con la naturaleza, disfrutando de un entorno limpio y saludable.</p>
             </div>
+            <div class="about-card">
+                <h3>Nuestros Valores</h3>
+                <p>Sostenibilidad, Innovación, Colaboración y Educación son los pilares que guían nuestras acciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team">
+        <div class="section-header">
+            <h2>Nuestro Equipo</h2>
+            <p>Conoce a las personas detrás de Guardianes del Clima</p>
+        </div>
+        <div class="team-container">
             <div class="team-member">
-                <img src="../images/emanuel.png" alt="Miembro del equipo 3">
-                <h4>Emanuel Barranco</h4>
-                <p>Especialista en Educación Ambiental</p>
+                <div class="member-image-wrapper">
+                    <div class="member-image">
+                        <img src="../images/leo.png" alt="Leonardo Barraza">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member-info">
+                    <h4>Leonardo Barraza</h4>
+                    <p class="member-role">Director Ejecutivo</p>
+                    <p class="member-desc">Especialista en gestión ambiental y desarrollo sostenible</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-image-wrapper">
+                    <div class="member-image">
+                        <img src="../images/jenn.jpg" alt="Jenifer Lopez">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member-info">
+                    <h4>Jenifer Lopez</h4>
+                    <p class="member-role">Coordinadora de Proyectos</p>
+                    <p class="member-desc">Experta en educación ambiental y comunicación</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-image-wrapper">
+                    <div class="member-image">
+                        <img src="../images/emanuel.png" alt="Emanuel Barranco">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member-info">
+                    <h4>Emanuel Barranco</h4>
+                    <p class="member-role">Especialista en Educación Ambiental</p>
+                    <p class="member-desc">Líder en programas de concientización ambiental</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contacto" class="contact">
-        <h2>Contáctanos</h2>
-        <form action="enviarCorreo.php" method="post">
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" required>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-header">
+                    <h2>¡Conversemos!</h2>
+                    <p>Estamos aquí para escuchar tus ideas y responder tus preguntas sobre el medio ambiente</p>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Ubicación</h3>
+                            <p>Barranquilla, Colombia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Teléfono</h3>
+                            <p>+57 123 456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>info@guardianesdelclima.com</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="correo">Correo</label>
-                <input type="email" id="correo" name="correo" required>
+            <div class="contact-form-wrapper">
+                <form class="contact-form" action="enviarCorreo.php" method="post">
+                    <div class="form-header">
+                        <h3>Envíanos un mensaje</h3>
+                        <p>Nos pondremos en contacto contigo pronto</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-container">
+                                <i class="fas fa-user"></i>
+                                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="input-container">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" name="correo" placeholder="Tu correo" required>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <i class="fas fa-tag"></i>
+                            <input type="text" name="asunto" placeholder="Asunto" required>
+                        </div>
+                        <div class="input-container">
+                            <i class="fas fa-pen"></i>
+                            <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Enviar Mensaje</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" required></textarea>
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
+        </div>
     </section>
 
     <footer class="footer">

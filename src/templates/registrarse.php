@@ -10,6 +10,9 @@ error_reporting(E_ALL);
 $errorMsg = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Debug: Imprimir los datos recibidos
+    error_log("Datos POST recibidos: " . print_r($_POST, true));
+
     $nombres = isset($_POST['nombres']) ? trim($_POST['nombres']) : '';
     $apellidos = isset($_POST['apellidos']) ? trim($_POST['apellidos']) : '';
     $telefono = isset($_POST['telefono']) ? trim($_POST['telefono']) : '';
@@ -17,34 +20,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ciudad = isset($_POST['ciudad']) ? trim($_POST['ciudad']) : '';
     $correo = isset($_POST['correo']) ? trim($_POST['correo']) : '';
     $contrasena = isset($_POST['contrasena']) ? trim($_POST['contrasena']) : '';
-    $fechaRegistro = date('Y-m-d H:i:s'); // Añadir la fecha de registro
+    $fechaRegistro = date('Y-m-d H:i:s');
 
-    // Validar que los campos no estén vacíos
+    // Debug: Verificar los valores antes de la inserción
+    error_log("Valores a insertar: ");
+    error_log("Nombres: " . $nombres);
+    error_log("Apellidos: " . $apellidos);
+    error_log("Teléfono: " . $telefono);
+    error_log("País: " . $pais);
+    error_log("Ciudad: " . $ciudad);
+    error_log("Correo: " . $correo);
+    error_log("Fecha: " . $fechaRegistro);
+
     if (empty($nombres) || empty($apellidos) || empty($telefono) || 
         empty($pais) || empty($ciudad) || empty($correo) || empty($contrasena)) {
         $errorMsg = "Por favor, complete todos los campos.";
+        error_log("Error: campos vacíos detectados");
     } else {
-        // Verificar si el correo ya existe
-        $stmt = $conn->prepare("SELECT IdUsuario FROM usuarios WHERE Correo = ?");
-        $stmt->bind_param("s", $correo);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows > 0) {
-            $errorMsg = "Este correo ya está registrado.";
-        } else {
-            // Insertar nuevo usuario
-            $stmt = $conn->prepare("INSERT INTO usuarios (Nombres, Apellidos, Telefono, Pais, Ciudad, Correo, Contraseña, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssssss", $nombres, $apellidos, $telefono, $pais, $ciudad, $correo, $contrasena, $fechaRegistro);
+        try {
+            // Verificar si el correo ya existe
+            $stmt = $conn->prepare("SELECT IdUsuario FROM usuarios WHERE Correo = ?");
+            if (!$stmt) {
+                throw new Exception("Error en la preparación de la consulta: " . $conn->error);
+            }
             
-            if ($stmt->execute()) {
+            $stmt->bind_param("s", $correo);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $errorMsg = "Este correo ya está registrado.";
+                error_log("Error: correo duplicado");
+            } else {
+                // Insertar nuevo usuario
+                $stmt = $conn->prepare("INSERT INTO usuarios (Nombres, Apellidos, Telefono, Pais, Ciudad, Correo, Contraseña, FechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                if (!$stmt) {
+                    throw new Exception("Error en la preparación de la inserción: " . $conn->error);
+                }
+                
+                $stmt->bind_param("ssssssss", $nombres, $apellidos, $telefono, $pais, $ciudad, $correo, $contrasena, $fechaRegistro);
+                
+                if (!$stmt->execute()) {
+                    throw new Exception("Error en la ejecución de la inserción: " . $stmt->error);
+                }
+                
+                error_log("Usuario registrado exitosamente. ID: " . $stmt->insert_id);
                 header("Location: iniciarSesion.php");
                 exit();
-            } else {
-                $errorMsg = "Error al registrar el usuario: " . $stmt->error;
+            }
+        } catch (Exception $e) {
+            error_log("Error en el proceso de registro: " . $e->getMessage());
+            $errorMsg = "Error al registrar el usuario: " . $e->getMessage();
+        } finally {
+            if (isset($stmt)) {
+                $stmt->close();
             }
         }
-        $stmt->close();
     }
 }
 

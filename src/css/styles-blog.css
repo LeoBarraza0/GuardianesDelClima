@@ -1,112 +1,172 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #004d40;
-    color: white;
+/* Estilos generales */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    padding: 10px;
+body {
+    font-family: 'Noto Serif Display', serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
 }
 
+/* Navbar */
 .navbar {
+    background: linear-gradient(45deg, #013927, #025e42);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: transparent;
+    color: white;
 }
 
-.navbar-left .fas {
-    font-size: 24px;
-    color: green;
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
 
 .navbar-center {
     display: flex;
-    gap: 20px;
+    gap: 2rem;
 }
 
-.navbar-center a {
-    color: #94bc4f;
-    text-decoration: none;
-    font-size: 18px;
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 1rem;
 }
 
-.navbar-right .search-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    border: 2px solid green; /* Borde del espacio de búsqueda */
-    background-color: transparent; /* Color transparente */
-    padding: 5px;
-    border-radius: 24px;
-}
-
-.navbar-right .search-container .fas {
-    color: white; /* Icono de lupa blanca */
-}
-
-.navbar-right .search-container input[type="text"] {
-    padding: 5px;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    background-color: transparent; /* Color transparente */
-    color: green; /* Color del texto */
-}
-
+/* Contenido principal */
 main {
-    padding: 20px;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
 }
 
 h1 {
+    color: #013927;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
 .section {
-    width: 100%;
-    background-color: #00695c;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
     display: flex;
-    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
-.section img {
-    width: 50%;
-    border-radius: 10px;
-    margin-left: 20px;
+.section:hover {
+    transform: translateY(-5px);
 }
 
-.section .text {
-    width: 50%;
+.text {
+    flex: 1;
+}
+
+.text h2 {
+    color: #025e42;
+    margin-bottom: 1rem;
+}
+
+.text p {
+    color: #666;
+    margin-bottom: 1rem;
 }
 
 .more-content {
     display: none;
 }
 
-button {
-    background-color: #00796b;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+.section img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-button:hover {
-    background-color: #004d40;
+.read-more {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    background: #013927;
+    color: white;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #4CAF50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+    }
+
+    .section img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .navbar-center {
+        display: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
 }
 

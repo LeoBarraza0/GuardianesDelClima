@@ -12,7 +12,63 @@ if (isset($_SESSION['IdUsuario'])) {
 } else {
     $ciudadUsuario = 'Madrid';
 }
+
+// Al inicio del archivo, antes del HTML
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verificar si hay datos recibidos
+    $jsonData = file_get_contents('php://input');
+    if (empty($jsonData)) {
+        die('No se recibieron datos del clima');
+    }
+
+    // Decodificar JSON con verificación
+    $weatherData = json_decode($jsonData, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        die('Error al decodificar JSON: ' . json_last_error_msg());
+    }
+
+    // Verificar que todos los datos necesarios estén presentes
+    if (!isset($weatherData['temperatura']) || 
+        !isset($weatherData['viento']) || 
+        !isset($weatherData['humedad']) || 
+        !isset($weatherData['visibilidad']) || 
+        !isset($weatherData['presion'])) {
+        die('Faltan datos del clima necesarios');
+    }
+
+    $prompt = sprintf(
+        "Según las condiciones climaticas, recomienda actividades y advierte de posibles catastrofes (si existe la posibilidad manten la respuesta clara y concisa): temperatura: %d viento: %.2f km/h humedad: %d%% visibilidad: %dkm presión: %dmb (responde en español)",
+        $weatherData['temperatura'],
+        $weatherData['viento'],
+        $weatherData['humedad'],
+        $weatherData['visibilidad'],
+        $weatherData['presion']
+    );
+
+    // Usar curl para hacer la petición al servidor Flask
+    $ch = curl_init('http://localhost:5000/chat');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(['prompt' => $prompt]));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    error_log("Prompt enviado a Llama3: " . $prompt);
+    
+    $response = curl_exec($ch);
+    if (curl_errno($ch)) {
+        error_log('Error Curl: ' . curl_error($ch));
+        echo "Error al conectar con el servidor de Llama3";
+    } else {
+        $decoded_response = json_decode($response, true);
+        error_log("Respuesta completa de Llama3: " . print_r($decoded_response, true));
+        echo $decoded_response['respuesta'];
+    }
+    
+    curl_close($ch);
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,13 +93,14 @@ if (isset($_SESSION['IdUsuario'])) {
             <a href="../templates/descubre.php">Descubre</a>
             <a href="../templates/inicio.php">Sobre nosotros</a>
             <a href="../templates/juego.php">¡Ponte a prueba!</a>
-            <a href="#">Recomendaciones</a>
+            <a href="../templates/blog.php">Recomendaciones</a>
             <a href="../templates/inicio.php">Contactanos</a>
             <form action="cerrarSesion.php" method="post" style="display:inline;">
                 <button type="submit" class="logout-btn">Cerrar Sesión</button>
             </form>
         </div>
     </nav>
+    
     <div class="weather-app">
         <div>
         <form class="search-form" action="">
@@ -96,13 +153,9 @@ if (isset($_SESSION['IdUsuario'])) {
         </div>
         
         <div class="recomendaciones-panel">
-        <h2>Recomendaciones</h2>
-        <p class="Recomendaciones">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur repellat veniam odit nihil iusto vel
-            nesciunt non commodi, recusandae sapiente quibusdam deserunt iure. Laudantium dolorem ducimus aliquam
-            asperiores esse fuga. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut necessitatibus hic
-            sequi, autem dolore, blanditiis quo nostrum animi numquam velit eligendi quae quibusdam deserunt maxime
-            quas, incidunt provident harum voluptatem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita vitae laboriosam qui facere suscipit odit, dolor ex doloribus animi dignissimos. Soluta non molestiae porro quos perspiciatis amet, animi ipsum dolorum!</p>
-    </div>
+            <h2>Recomendaciones</h2>
+            <p class="Recomendaciones">Busca una ciudad para obtener recomendaciones basadas en el clima.</p>
+        </div>
     </div>
 <script src="../js/scriptapi.js" data-ciudad="<?php echo $ciudadUsuario; ?>"></script>
 </body>
